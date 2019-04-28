@@ -5,6 +5,21 @@ services:
     image: awesomeinc/zero:onbuild
     build:
       context: zero
-  app:
+  
+  prod:
+    ports: ['80:80']
     build:
       context: app
+
+  dev:
+    image: awesomeinc/zero:onbuild
+    environment: # sadly fsevents/hot reloading does not work here
+      NODE_ENV: development
+      PORT: 8080
+    ports: ['8080:8080']
+    volumes: 
+      - ./app/:/app/
+      - yarn_cache:/usr/local/share/.cache/yarn/
+
+volumes:
+  yarn_cache: {}
