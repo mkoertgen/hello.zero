@@ -6,12 +6,12 @@ services:
     build:
       context: zero
   
-  prod:
+  app:
     ports: ['80:80']
     build:
       context: app
 
-  dev:
+  app-dev:
     image: awesomeinc/zero:onbuild
     environment: # sadly fsevents/hot reloading does not work here
       NODE_ENV: development
