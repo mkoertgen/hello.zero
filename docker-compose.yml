@@ -5,6 +5,8 @@ services:
     image: ${ZERO_IMAGE}
     build:
       context: zero
+      args:
+        ZERO_VERSION: ${ZERO_VERSION}
   
   app:
     ports: ['80:80']
