@@ -2,7 +2,7 @@ version: '3'
 
 services:
   zero:
-    image: awesomeinc/zero:onbuild
+    image: ${ZERO_IMAGE}
     build:
       context: zero
   
@@ -10,9 +10,11 @@ services:
     ports: ['80:80']
     build:
       context: app
+      args:
+        BASE_IMAGE: ${ZERO_IMAGE}
 
   app-dev:
-    image: awesomeinc/zero:onbuild
+    image: ${ZERO_IMAGE}
     environment: # sadly fsevents/hot reloading does not work here
       NODE_ENV: development
       PORT: 8080
