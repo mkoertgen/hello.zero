@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  zero:
+    image: awesomeinc/zero:onbuild
+    build:
+      context: zero
+  app:
+    build:
+      context: app
